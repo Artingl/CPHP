@@ -1,11 +1,30 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
+import lang.*;
 
 public class main {
 
     public static void main(String[] args) throws Exception {
         String code = read_code("code.php");
+        String[][] tokens;
+
+        lexer lex = new lexer();
+        parser pars = new parser();
+
+        lex.code = code;
+        tokens = lex.getTokens();
+
+        pars.tokens = tokens;
+
+
+        for (String[] token : tokens) {
+            if(token[0] != null)
+                System.out.println(Arrays.toString(token));
+        }
     }
 
     private static String read_code(String file_name) throws Exception {
