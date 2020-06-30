@@ -12,12 +12,25 @@ public class lexer {
         tokens = new String[code.length()][2];
         StringBuilder tmp_str = new StringBuilder();
         String[] symbols;
+        boolean skipl = false;
         int token = 0;
         char chr;
 
         for (int chr_pos = 0; chr_pos < code.length(); chr_pos++)
         {
             chr = (char ) code.getBytes()[chr_pos];
+
+            if(String.valueOf(chr).equals("\"") || String.valueOf(chr).equals("'"))
+            {
+                skipl = !skipl;
+                if(!skipl) continue;
+            }
+
+            if(skipl)
+            {
+                continue;
+            }
+
             symbols = checkSymbols.check(dictionary.symbols, tmp_str.toString().trim());
 
             if(!symbols[0].equals(""))

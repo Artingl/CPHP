@@ -11,6 +11,7 @@ public class main {
     public static void main(String[] args) throws Exception {
         String code = read_code("code.php");
         String[][] tokens;
+        String[][] tokens_parser;
 
         lexer lex = new lexer();
         parser pars = new parser();
@@ -18,7 +19,7 @@ public class main {
         lex.code = code;
         tokens = lex.getTokens();
 
-        pars.tokens = tokens;
+        tokens_parser = pars.parse(tokens);
 
 
         for (String[] token : tokens) {
