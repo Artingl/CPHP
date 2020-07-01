@@ -10,10 +10,12 @@ public class dictionary {
             {"return", "IDENT"},
             {"echo", "IDENT"},
             {"if", "IDENT"},
+            {"else", "IDENT"},
             {"for", "IDENT"},
-            {"whiile", "IDENT"},
+            {"while", "IDENT"},
             {"foreach", "IDENT"},
-            {"$", "IDENT"},
+
+            {"$", "CREATE_VARIABLE"},
 
             {"(", "SIGN"},
             {")", "SIGN"},

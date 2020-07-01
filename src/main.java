@@ -22,10 +22,10 @@ public class main {
         tokens_parser = pars.parse(tokens);
 
 
-        for (String[] token : tokens) {
+/*        for (String[] token : tokens) {
             if(token[0] != null)
                 System.out.println(Arrays.toString(token));
-        }
+        }*/
     }
 
     private static String read_code(String file_name) throws Exception {

@@ -11,6 +11,7 @@ public class lexer {
     {
         tokens = new String[code.length()][2];
         StringBuilder tmp_str = new StringBuilder();
+        StringBuilder tmp_strl = new StringBuilder();
         String[] symbols;
         boolean skipl = false;
         int token = 0;
@@ -23,11 +24,18 @@ public class lexer {
             if(String.valueOf(chr).equals("\"") || String.valueOf(chr).equals("'"))
             {
                 skipl = !skipl;
-                if(!skipl) continue;
+                if(!skipl)
+                {
+                    tokens[token] = new String[]{tmp_strl.toString() + chr, "unknown"};
+                    tmp_strl = new StringBuilder();
+                    token++;
+                    continue;
+                }
             }
 
             if(skipl)
             {
+                tmp_strl.append(chr);
                 continue;
             }
 

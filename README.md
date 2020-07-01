@@ -1,2 +1,2 @@
 # CPHP
- PHP Translator to C
+ PHP Translator to C++
