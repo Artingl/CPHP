@@ -8,7 +8,7 @@ public class typeSystem {
 
         if(str.endsWith("'") || str.endsWith("\"")) return "String";
 
-        if(str.equals("true") || str.equals("false")) return "boolean";
+        if(str.equals("true") || str.equals("false") || str.equals("0") || str.equals("1")) return "boolean";
 
         String[] nums = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "a", "b", "c", "d", "e", "f"};
 
@@ -60,7 +60,7 @@ public class typeSystem {
 
             if(check) return "int";
         }
-        
+
 
         return "unknown";
     }
