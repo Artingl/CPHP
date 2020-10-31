@@ -7,6 +7,6 @@ function test ($n1, $n2)
 
 $test = 11;
 
-echo test(10, 1) . " Test!";
+print(test(10, 1) . " Test!");
 
 ?>

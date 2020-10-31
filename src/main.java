@@ -12,14 +12,15 @@ public class main {
         String code = read_code("code.php");
         String[][] tokens;
         String[][] tokens_parser;
+        String cpp;
 
         lexer lex = new lexer();
         parser pars = new parser();
 
         lex.code = code;
         tokens = lex.getTokens();
-
         tokens_parser = pars.parse(tokens);
+        cpp = translator.getCppCOde(tokens_parser);
 
 
 /*        for (String[] token : tokens) {
