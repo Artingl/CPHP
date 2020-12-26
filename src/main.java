@@ -6,7 +6,7 @@ import lang.*;
 public class main {
 
     public static void main(String[] args) throws Exception {
-        String code = deleteComments(read_code("code.php"));
+        String code = deleteComments(read_code(getArg(args, "-f")));
         String[][] tokens;
         String[][] tokens_parser;
         String cpp;
@@ -19,13 +19,52 @@ public class main {
         //tokens_parser = pars.parse(tokens);
         cpp = translator.getCppCode(tokens);
 
-        FileWriter fileWriter = new FileWriter(new File("test.cpp"));
-        fileWriter.write(cpp);
-        fileWriter.close();
+        compileCppCode(cpp);
 
-        for (String[] token : tokens) {
+
+        /*for (String[] token : tokens) {
             if(token[0] != null)
                 System.out.println(Arrays.toString(token));
+        }*/
+    }
+
+    private static String getArg(String[] args, String arg)
+    {
+        for (int i = 0; i < args.length; i += 2)
+        {
+            if (args[i].equals(arg))
+                return args[i + 1];
+        }
+
+        return "";
+    }
+
+    private static void compileCppCode(String code) throws IOException, InterruptedException {
+        FileWriter fw = new FileWriter("cpp/code.cpp");
+        fw.write(code);
+        fw.close();
+
+        //Runtime runTime = Runtime.getRuntime();
+        //Process process = runTime.exec("mingw64/bin/g++.exe cpp/code.cpp");
+
+        ProcessBuilder   ps=new ProcessBuilder("mingw64/bin/g++.exe","cpp/code.cpp");
+        ps.redirectErrorStream(true);
+
+        Process pr = ps.start();
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+        String line, res = "";
+        while ((line = in.readLine()) != null) {
+            res += line + "\n";
+        }
+        pr.waitFor();
+        in.close();
+
+        if (!res.equals(""))
+        {
+            System.out.println("CPP INFO: -->");
+            System.out.print(res);
+            System.out.println("<--");
         }
     }
 
