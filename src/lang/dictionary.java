@@ -34,6 +34,8 @@ public class dictionary {
             {"*", "OPERATOR"},
             {"/", "OPERATOR"},
             {"%", "OPERATOR"},
+            {">", "OPERATOR"},
+            {"<", "OPERATOR"},
 
             {"<?php", "BOF"},
             {"?>", "EOF"},

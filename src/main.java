@@ -44,21 +44,17 @@ public class main {
         fw.write(code);
         fw.close();
 
-        //Runtime runTime = Runtime.getRuntime();
-        //Process process = runTime.exec("mingw64/bin/g++.exe cpp/code.cpp");
+        Process p = Runtime.getRuntime().exec("mingw64/bin/g++.exe -w -fconcepts cpp/code.cpp");
 
-        ProcessBuilder   ps=new ProcessBuilder("mingw64/bin/g++.exe","cpp/code.cpp");
-        ps.redirectErrorStream(true);
 
-        Process pr = ps.start();
-
-        BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+        BufferedReader in = new BufferedReader(new InputStreamReader(p.getErrorStream()));
         String line, res = "";
         while ((line = in.readLine()) != null) {
             res += line + "\n";
         }
-        pr.waitFor();
+        p.waitFor();
         in.close();
+        int exitStatus = p.exitValue();
 
         if (!res.equals(""))
         {
@@ -66,6 +62,7 @@ public class main {
             System.out.print(res);
             System.out.println("<--");
         }
+        System.out.println("Exit code: " + exitStatus);
     }
 
     public static String deleteComments(String code) {

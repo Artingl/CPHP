@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
- auto  testFunction  (  auto  s1  ,  auto  s2  )  {  print  (  s1  )  ;  print  (  s2  )  ;  } 
-int main() { testFunction  (  "Hello, -"  ,  "-World!"  )  ; 
+
+int main() { print  (  "hello, world!"  )  ; 
 return 0;
 }
