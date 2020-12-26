@@ -26,7 +26,7 @@ public class lexer {
                 skipl = !skipl;
                 if(!skipl)
                 {
-                    tokens[token] = new String[]{tmp_strl.toString() + chr, "unknown"};
+                    tokens[token] = new String[]{tmp_strl.toString() + chr, "UNKNOWN"};
                     tmp_strl = new StringBuilder();
                     token++;
                     continue;

@@ -14,6 +14,7 @@ public class dictionary {
             {"for", "IDENT"},
             {"while", "IDENT"},
             {"foreach", "IDENT"},
+            {"break", "IDENT"},
 
             {"$", "CREATE_VARIABLE"},
 
@@ -36,6 +37,18 @@ public class dictionary {
 
             {"<?php", "BOF"},
             {"?>", "EOF"},
+    };
+
+    public static String translateIdent(String s){
+        if (s.toLowerCase().equals("function"))
+            return "auto";
+
+        return s;
+    }
+
+    public static String[][] translate = {
+
+
     };
 
 }

@@ -12,7 +12,7 @@ public class typeSystem {
 
         String[] nums = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "a", "b", "c", "d", "e", "f"};
 
-        if(str.startsWith("0x") && str.length() > 2)
+        if ((str.startsWith("0x") || str.startsWith("0b")) && str.length() > 2)
         {
             boolean check = false;
             for (int i = 2; i < str.length(); i++)

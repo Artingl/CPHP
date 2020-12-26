@@ -1,12 +1,8 @@
-<?php
-
-function test ($n1, $n2)
+function testFunction($s1, $s2)
 {
-    return $n1 + $n1;
+    print($s1);
+    print($s2);
+
 }
 
-$test = 11;
-
-print(test(10, 1) . " Test!");
-
-?>
+testFunction("Hello, ", "World!");
